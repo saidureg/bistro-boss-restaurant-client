@@ -1,6 +1,7 @@
 import Banner from "../Banner/Banner";
 import Category from "../Category/Category";
 import PopularMenu from "../PopularMenu/PopularMenu";
+import Testimonials from "../Testimonials/Testimonials";
 import FeaturesItem from "./FeaturesItem/FeaturesItem";
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
       <Category />
       <PopularMenu />
       <FeaturesItem />
+      <Testimonials />
     </div>
   );
 };
