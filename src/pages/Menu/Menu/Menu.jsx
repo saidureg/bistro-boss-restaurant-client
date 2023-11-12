@@ -26,7 +26,7 @@ const Menu = () => {
       <MenuCategory
         items={dessert}
         img={dessertImg}
-        title="Desserts"
+        title="dessert"
         btnText="ORDER YOUR FAVOURITE FOOD"
       />
       <MenuCategory
@@ -38,13 +38,13 @@ const Menu = () => {
       <MenuCategory
         items={salad}
         img={saladImg}
-        title="salads"
+        title="salad"
         btnText="ORDER YOUR FAVOURITE FOOD"
       />
       <MenuCategory
         items={soup}
         img={soupImg}
-        title="soups"
+        title="soup"
         btnText="ORDER YOUR FAVOURITE FOOD"
       />
     </div>
