@@ -2,10 +2,12 @@ import {
   FaCalendar,
   FaHome,
   FaList,
-  FaMoneyBill,
   FaRegAddressBook,
+  FaShoppingBag,
   FaShoppingCart,
 } from "react-icons/fa";
+import { MdMail, MdPayments } from "react-icons/md";
+import { IoMdMenu } from "react-icons/io";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
@@ -25,7 +27,7 @@ const Dashboard = () => {
           </li>
           <li>
             <NavLink to="/dashboard/payment">
-              <FaMoneyBill /> Payment History
+              <MdPayments /> Payment History
             </NavLink>
           </li>
           <li>
@@ -43,9 +45,30 @@ const Dashboard = () => {
               <FaList /> My Booking
             </NavLink>
           </li>
+          <div className="divider"></div>
+          <li>
+            <NavLink to="/">
+              <FaHome /> Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/menu">
+              <IoMdMenu /> Menu
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/order/salad">
+              <FaShoppingBag /> Order
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/contact">
+              <MdMail /> Contact
+            </NavLink>
+          </li>
         </ul>
       </div>
-      <div className="flex-1">
+      <div className="flex-1 p-8">
         <Outlet />
       </div>
     </div>

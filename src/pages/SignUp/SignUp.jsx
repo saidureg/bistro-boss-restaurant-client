@@ -5,10 +5,12 @@ import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SignUp = () => {
   const { createUser, updatedUserProfile, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
   const {
     register,
     reset,
@@ -16,23 +18,27 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
     const { name, photoURL, email, password } = data;
     createUser(email, password)
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
         updatedUserProfile(name, photoURL)
           .then(() => {
-            toast("User created successfully");
-            reset();
-            logOut().then(() => {
-              console.log("Log out successfully");
-              toast("Log out successfully");
-              navigate("/login", { replace: true });
+            const userInfo = {
+              name,
+              email,
+            };
+            axiosPublic.post("/users", userInfo).then((res) => {
+              if (res.data.insertedId) {
+                toast("User created successfully");
+                reset();
+                logOut().then(() => {
+                  toast("Log out successfully");
+                  navigate("/login", { replace: true });
+                });
+              }
             });
           })
           .catch((error) => {
-            console.error(error.message);
             Swal.fire({
               icon: "error",
               title: "Oops...",
@@ -41,7 +47,6 @@ const SignUp = () => {
           });
       })
       .catch((error) => {
-        console.error(error.message);
         Swal.fire({
           icon: "error",
           title: "Oops...",
