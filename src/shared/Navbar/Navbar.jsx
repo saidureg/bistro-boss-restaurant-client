@@ -1,7 +1,8 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { toast } from "react-toastify";
+import { FaShoppingCart } from "react-icons/fa";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
@@ -28,11 +29,21 @@ const Navbar = () => {
       <li>
         <NavLink to="/order/salad">Order Food</NavLink>
       </li>
+      <li>
+        <Link>
+          <button className="flex items-center gap-2">
+            <FaShoppingCart className="text-2xl" />
+            <div className="badge badge-secondary absolute top-0 right-0 -mr-6">
+              +0
+            </div>
+          </button>
+        </Link>
+      </li>
 
       {user ? (
         <>
-          <p>{user?.displayName}</p>
-          <button onClick={handleLogOut} className="btn btn-ghost">
+          {/* <p>{user?.displayName}</p> */}
+          <button onClick={handleLogOut} className="btn btn-ghost ml-3">
             Log Out
           </button>
         </>
