@@ -3,8 +3,10 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { toast } from "react-toastify";
 import { FaShoppingCart } from "react-icons/fa";
+import useCart from "../../hooks/useCart";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [cart] = useCart();
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -34,7 +36,7 @@ const Navbar = () => {
           <button className="flex items-center gap-2">
             <FaShoppingCart className="text-2xl" />
             <div className="badge badge-secondary absolute top-0 right-0 -mr-6">
-              +0
+              +{cart.length}
             </div>
           </button>
         </Link>

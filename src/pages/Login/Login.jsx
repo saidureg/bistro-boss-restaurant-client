@@ -101,11 +101,12 @@ const Login = () => {
                   name="captcha"
                   placeholder="Type Captcha Here.."
                   className="input input-bordered"
-                  required
+                  // required
                 />
               </div>
               <div className="form-control mt-6">
-                <button disabled={disable} className="btn btn-primary">
+                {/* must be disabled={disable} in later */}
+                <button disabled={false} className="btn btn-primary">
                   Login
                 </button>
               </div>
