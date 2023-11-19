@@ -12,10 +12,11 @@ import {
 import { MdMail, MdPayments } from "react-icons/md";
 import { IoMdMenu } from "react-icons/io";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   // TODO: get api for admin role
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
   return (
     <div className="flex">
       <div className="w-64 h-screen bg-[#D1A054]">

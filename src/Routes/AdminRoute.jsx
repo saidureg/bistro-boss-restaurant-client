@@ -1,20 +1,22 @@
-import PropTypes from "prop-types";
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import PropTypes from "prop-types";
+import useAdmin from "../hooks/useAdmin";
 
-const PrivateRoute = ({ children }) => {
+const AdminRoute = ({ children }) => {
+  const [isAdmin, isAdminLoading] = useAdmin();
   const { user, loading } = useAuth();
   const location = useLocation();
-  if (loading) {
+  if (loading || isAdminLoading) {
     return <progress className="progress w-56"></progress>;
   }
-  if (user) {
+  if (user && isAdmin) {
     return children;
   }
   return <Navigate to="/login" state={{ from: location }} replace />;
 };
-PrivateRoute.propTypes = {
+AdminRoute.propTypes = {
   children: PropTypes.node,
 };
 
-export default PrivateRoute;
+export default AdminRoute;
