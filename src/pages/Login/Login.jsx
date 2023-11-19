@@ -8,6 +8,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import SocialLogin from "../../shared/SocialLogin/SocialLogin";
 const Login = () => {
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -119,6 +120,10 @@ const Login = () => {
                 </span>
               </Link>
             </p>
+            <div className="divider"></div>
+            <div className="flex justify-center mb-5">
+              <SocialLogin />
+            </div>
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../../shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const { createUser, updatedUserProfile, logOut } = useContext(AuthContext);
@@ -164,6 +165,10 @@ const SignUp = () => {
                 </span>
               </Link>
             </p>
+            <div className="divider"></div>
+            <div className="flex justify-center mb-5">
+              <SocialLogin />
+            </div>
           </div>
         </div>
       </div>

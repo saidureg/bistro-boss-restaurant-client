@@ -2,6 +2,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import useCart from "../../../hooks/useCart";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import SectionTitle from "../../../components/SectionTitle";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
@@ -34,6 +35,7 @@ const Cart = () => {
   };
   return (
     <div>
+      <SectionTitle subHeading="My Cart" heading="WANNA ADD MORE?" />
       <div className="flex justify-evenly items-center uppercase mb-10">
         <h3 className="text-xl">Total Order: {cart.length}</h3>
         <h3 className="text-xl">Total Price: ${totalPrice}</h3>
