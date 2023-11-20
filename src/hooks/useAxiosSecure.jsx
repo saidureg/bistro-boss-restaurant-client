@@ -22,13 +22,13 @@ const useAxiosSecure = () => {
   );
 
   // Add a response interceptor for 401 and 403 errors
-  axios.interceptors.response.use(
+  axiosSecure.interceptors.response.use(
     function (response) {
       return response;
     },
     async (error) => {
       const status = error.response.status;
-      console.log("status error in the interceptors", status);
+      // console.log("status error in the interceptors", status);
       if (status === 401 || status === 403) {
         await logOut();
         navigate("/login");

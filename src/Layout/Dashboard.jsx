@@ -44,7 +44,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/allUsers">
+                <NavLink to="/dashboard/users">
                   <FaUsers /> All Users
                 </NavLink>
               </li>
