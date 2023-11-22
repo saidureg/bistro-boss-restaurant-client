@@ -33,7 +33,7 @@ const SignUp = () => {
                 toast("User created successfully");
                 reset();
                 logOut().then(() => {
-                  toast("Log out successfully");
+                  // toast("Log out successfully");
                   navigate("/login", { replace: true });
                 });
               }
