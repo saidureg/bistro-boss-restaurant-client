@@ -4,8 +4,10 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { toast } from "react-toastify";
 import { FaShoppingCart } from "react-icons/fa";
 import useCart from "../../hooks/useCart";
+import useAdmin from "../../hooks/useAdmin";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
   const [cart] = useCart();
   const handleLogOut = () => {
     logOut()
@@ -31,6 +33,19 @@ const Navbar = () => {
       <li>
         <NavLink to="/order/salad">Order Food</NavLink>
       </li>
+      {user ? (
+        isAdmin ? (
+          <li>
+            <NavLink to="/dashboard/adminHome">Admin Dashboard</NavLink>
+          </li>
+        ) : (
+          <li>
+            <NavLink to="/dashboard/userHome">User Dashboard</NavLink>
+          </li>
+        )
+      ) : (
+        ""
+      )}
       <li>
         <Link to="/dashboard/cart">
           <button className="flex items-center gap-2">
@@ -42,6 +57,12 @@ const Navbar = () => {
         </Link>
       </li>
 
+      {/* {
+        user && isAdmin && <li>
+        <NavLink to="/dashboard/adminHome">Admin Dashboard</NavLink>
+      </li>
+      } */}
+
       {user ? (
         <>
           {/* <p>{user?.displayName}</p> */}
@@ -51,7 +72,7 @@ const Navbar = () => {
         </>
       ) : (
         <>
-          <li>
+          <li className="ml-3">
             <NavLink to="/login">Login</NavLink>
           </li>
         </>
